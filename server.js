@@ -5,20 +5,20 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 // Enhanced CORS configuration
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:8080', 'http://127.0.0.1:8080', `http://localhost:${PORT}`, `http://127.0.0.1:${PORT}`],
+  origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:8080', 'http://127.0.0.1:8080', `http://localhost:${PORT}`, `http://127.0.0.1:${PORT}`, `https://actrac-cvft.vercel.app`],
   credentials: true
 }));
 
 app.use(express.json({ limit: '10mb' }));
-app.use(express.static(path.join(__dirname, '../Frontend')));
+app.use(express.static(path.join(__dirname)));
 
 // Serve frontend
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../Frontend/index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Connect DB with error handling

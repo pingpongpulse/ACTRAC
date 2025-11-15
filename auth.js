@@ -2,7 +2,7 @@
 
 class AuthApp {
     constructor() {
-        this.apiUrl = 'http://localhost:3001';
+        this.apiUrl = 'https://actrac.onrender.com';
         this.init();
     }
 
