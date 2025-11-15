@@ -82,6 +82,8 @@ Actrac/
 - npm (comes with Node.js)
 - Git (for version control)
 
+**Note: This application does not require any API keys or external services. All functionality is self-contained.**
+
 ### Installation
 
 1. Clone the repository:
