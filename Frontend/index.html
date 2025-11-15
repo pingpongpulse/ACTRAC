@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actrac - Activity Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Animation Container -->
+    <div class="background-animation"></div>
+    
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header Section -->
+        <header class="header-section">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="title-letter">A</span>
+                    <span class="title-letter">c</span>
+                    <span class="title-letter">t</span>
+                    <span class="title-letter">r</span>
+                    <span class="title-letter">a</span>
+                    <span class="title-letter">c</span>
+                </h1>
+                <p class="app-subtitle">Track Your Activity Points!</p>
+            </div>
+            <div class="header-decoration"></div>
+            
+            <!-- User Info and Theme Toggle -->
+            <div class="user-controls">
+                <div class="theme-toggle" id="themeToggle">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </div>
+                <div class="user-info" id="userInfo">
+                    <span id="usernameDisplay"></span>
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Dashboard -->
+        <section class="stats-dashboard">
+            <div class="stats-grid">
+                <div class="stat-card total-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-content">
+                        <h3>Total Points</h3>
+                        <div class="stat-value" id="totalPoints">0</div>
+                    </div>
+                    <div class="stat-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card remaining-card">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-content">
+                        <h3>Points to 100</h3>
+                        <div class="stat-value" id="remainingPoints">100</div>
+                    </div>
+                    <div class="achievement-badge" id="achievementBadge">
+                        <span>Keep Going!</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card activities-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3>Activities</h3>
+                        <div class="stat-value" id="totalActivities">0</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add Activity Section -->
+        <section class="add-activity-section">
+            <div class="glass-panel">
+                <h2 class="section-title">Add New Activity</h2>
+                <form class="activity-form" id="activityForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="activityName" class="form-label">Activity Name</label>
+                            <input 
+                                type="text" 
+                                id="activityName" 
+                                name="activityName" 
+                                class="form-input" 
+                                placeholder="Enter activity name..."
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="activityPoints" class="form-label">Activity Points</label>
+                            <input 
+                                type="number" 
+                                id="activityPoints" 
+                                name="activityPoints" 
+                                class="form-input" 
+                                placeholder="Enter points..."
+                                min="1"
+                                max="100"
+                                required
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="activityDate" class="form-label">Date</label>
+                            <input 
+                                type="date" 
+                                id="activityDate" 
+                                name="activityDate" 
+                                class="form-input"
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="activityHost" class="form-label">Host/Conductor</label>
+                            <input 
+                                type="text" 
+                                id="activityHost" 
+                                name="activityHost" 
+                                class="form-input" 
+                                placeholder="Enter host name..."
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="activityDescription" class="form-label">Description</label>
+                        <textarea 
+                            id="activityDescription" 
+                            name="activityDescription" 
+                            class="form-input" 
+                            placeholder="Enter activity description (100-200 characters)..."
+                            rows="3"
+                            maxlength="200"
+                        ></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Add Activity</span>
+                        <span class="btn-icon">✨</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Activities List -->
+        <section class="activities-section">
+            <div class="section-header">
+                <h2 class="section-title">Your Activities</h2>
+            </div>
+            
+            <div class="activities-container" id="activitiesContainer">
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">🎯</div>
+                    <h3>No Activities Yet</h3>
+                    <p>Add your first activity to get started!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Edit Activity Modal -->
+        <div class="modal" id="editActivityModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Edit Activity</h2>
+                    <span class="close-modal" id="closeEditModal">&times;</span>
+                </div>
+                <form class="activity-form" id="editActivityForm">
+                    <input type="hidden" id="editActivityId">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editActivityName" class="form-label">Activity Name</label>
+                            <input 
+                                type="text" 
+                                id="editActivityName" 
+                                name="editActivityName" 
+                                class="form-input" 
+                                placeholder="Enter activity name..."
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editActivityPoints" class="form-label">Activity Points</label>
+                            <input 
+                                type="number" 
+                                id="editActivityPoints" 
+                                name="editActivityPoints" 
+                                class="form-input" 
+                                placeholder="Enter points..."
+                                min="1"
+                                max="100"
+                                required
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editActivityDate" class="form-label">Date</label>
+                            <input 
+                                type="date" 
+                                id="editActivityDate" 
+                                name="editActivityDate" 
+                                class="form-input"
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editActivityHost" class="form-label">Host/Conductor</label>
+                            <input 
+                                type="text" 
+                                id="editActivityHost" 
+                                name="editActivityHost" 
+                                class="form-input" 
+                                placeholder="Enter host name..."
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editActivityDescription" class="form-label">Description</label>
+                        <textarea 
+                            id="editActivityDescription" 
+                            name="editActivityDescription" 
+                            class="form-input" 
+                            placeholder="Enter activity description (100-200 characters)..."
+                            rows="3"
+                            maxlength="200"
+                        ></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="delete-btn" id="deleteActivityBtn">Delete Activity</button>
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Save Changes</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Achievement Modal -->
+        <div class="achievement-modal" id="achievementModal">
+            <div class="modal-content">
+                <div class="achievement-animation">
+                    <div class="achievement-icon">🏆</div>
+                    <h2>Congratulations!</h2>
+                    <p>You've reached <span id="achievementPoints">100</span> activity points!</p>
+                    <button class="close-modal-btn" id="closeModal">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

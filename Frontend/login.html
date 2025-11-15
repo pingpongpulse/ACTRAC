@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actrac - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Animation Container -->
+    <div class="background-animation"></div>
+    
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header Section -->
+        <header class="header-section">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="title-letter">A</span>
+                    <span class="title-letter">c</span>
+                    <span class="title-letter">t</span>
+                    <span class="title-letter">r</span>
+                    <span class="title-letter">a</span>
+                    <span class="title-letter">c</span>
+                </h1>
+                <p class="app-subtitle">Track Your Activities with Style</p>
+            </div>
+            <div class="header-decoration"></div>
+        </header>
+
+        <!-- Login/Signup Section -->
+        <section class="auth-section">
+            <div class="glass-panel">
+                <div class="auth-toggle">
+                    <button id="loginToggle" class="toggle-btn active">Login</button>
+                    <button id="signupToggle" class="toggle-btn">Sign Up</button>
+                </div>
+
+                <!-- Login Form -->
+                <form class="auth-form" id="loginForm">
+                    <h2 class="section-title">Welcome Back</h2>
+                    <div class="form-group">
+                        <label for="loginEmail" class="form-label">Email</label>
+                        <input 
+                            type="email" 
+                            id="loginEmail" 
+                            name="loginEmail" 
+                            class="form-input" 
+                            placeholder="Enter your email..."
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input 
+                            type="password" 
+                            id="loginPassword" 
+                            name="loginPassword" 
+                            class="form-input" 
+                            placeholder="Enter your password..."
+                            required
+                        >
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Login</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+
+                <!-- Signup Form (hidden by default) -->
+                <form class="auth-form hidden" id="signupForm">
+                    <h2 class="section-title">Create Account</h2>
+                    <div class="form-group">
+                        <label for="signupUsername" class="form-label">Username</label>
+                        <input 
+                            type="text" 
+                            id="signupUsername" 
+                            name="signupUsername" 
+                            class="form-input" 
+                            placeholder="Choose a username..."
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupEmail" class="form-label">Email</label>
+                        <input 
+                            type="email" 
+                            id="signupEmail" 
+                            name="signupEmail" 
+                            class="form-input" 
+                            placeholder="Enter your email..."
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupPassword" class="form-label">Password</label>
+                        <input 
+                            type="password" 
+                            id="signupPassword" 
+                            name="signupPassword" 
+                            class="form-input" 
+                            placeholder="Create a password..."
+                            minlength="6"
+                            required
+                        >
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Sign Up</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
