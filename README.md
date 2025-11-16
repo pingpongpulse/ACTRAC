@@ -32,9 +32,6 @@ A full-featured activity tracking web application with user authentication, acti
 - 📈 **Goal Tracking**: Visual progress toward 100 activity points
 - ✨ **Achievements**: Celebration animations when reaching goals
 
-## Demo
-
-![Actrac Demo](https://placehold.co/600x400?text=Actrac+Demo+Screenshot)
 
 *Login Page*
 *Dashboard with Statistics*
@@ -62,16 +59,15 @@ A full-featured activity tracking web application with user authentication, acti
 
 ```
 Actrac/
-├── Backend/
-│   ├── server.js          # Main server file
-│   ├── package.json       # Node.js dependencies
-│   └── db.sqlite          # SQLite database file
-└── Frontend/
-    ├── index.html         # Main dashboard page
-    ├── login.html         # Authentication page
-    ├── script.js          # Main application logic
-    ├── auth.js            # Authentication logic
-    └── styles.css         # Styling for the entire application
+|
+├── server.js          # Main server file
+├──package.json       # Node.js dependencies
+└── db.sqlite          # SQLite database file
+├── index.html          # Main dashboard page
+├── login.html         # Authentication page             
+├── script.js          # Main application logic    
+├── auth.js            # Authentication logic    
+└── styles.css         # Styling for the entire application
 ```
 
 ## Getting Started
@@ -226,10 +222,11 @@ node server.js
 - **DigitalOcean**: Use App Platform for easy deployment
 - **AWS**: Deploy with Elastic Beanstalk
 - **Vercel**: For frontend hosting (backend needs separate deployment)
+- **Render**: For monolithic deployment to run the frontend as well as backend as a unit web service(currently using)
 
 ### Environment Variables
 
-- `PORT`: Server port (default: 3001)
+- `PORT`: Server port (default: 5000)
 
 ## Contributing
 
@@ -262,4 +259,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ by [Your Name]**
+**Made with (●'◡'●)**
